@@ -30,6 +30,10 @@ module R2d2
     def eql?(other)
       self.class == other.class && self == other
     end
+
+    def to_s
+      "#{@x}, #{@y}"
+    end
   end
 
   class Position
@@ -61,6 +65,10 @@ module R2d2
       puts self.class == other.class
       puts self == other
       self.class == other.class && self == other
+    end
+
+    def to_s
+      "Output: #{coordinate.to_s}, #{direction.to_s}"
     end
   end
 end

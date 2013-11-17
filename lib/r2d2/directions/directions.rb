@@ -25,6 +25,10 @@ module R2d2
       def turn_right
         East.new
       end
+
+      def to_s
+        "North"
+      end
     end
 
     class South < Direction
@@ -39,6 +43,10 @@ module R2d2
 
       def turn_right
         West.new
+      end
+
+      def to_s
+        "South"
       end
     end
 
@@ -55,6 +63,10 @@ module R2d2
       def turn_right
         South.new
       end
+
+      def to_s
+        "East"
+      end
     end
 
     class West < Direction
@@ -70,6 +82,11 @@ module R2d2
       def turn_right
         North.new
       end
+
+      def to_s
+        "West"
+      end
+
     end
 
   end

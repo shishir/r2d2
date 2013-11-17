@@ -38,7 +38,7 @@ module R2d2
 				logger.error "Incorrect command. Command can be one of Place, Move, Left, Right, North, South"
 			end while cmd_str.capitalize != "Report"
 
-#			puts @robot.position.to_s
+			puts @robot.position.to_s
 		end
 
 		def take_input
