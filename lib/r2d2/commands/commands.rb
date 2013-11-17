@@ -2,22 +2,22 @@ module R2d2
 	module Commands
 
 		class Place
-			attr_reader :coordinate
+			attr_reader :position
 
 			def initialize(options={})
 				@logger     = options[:logger]
 				@arguments  = options[:arguments]
-				@coordinate = parse_arguments(@arguments)
+				@position   = parse_arguments(@arguments)
 			end
 
 			def execute(robot)
-				robot.be_placed_at(@coordinate)
+				robot.be_placed_at(@position)
 			end
 
 			private
 			def parse_arguments(args)
 				x, y, head = args.split(',')
-				R2d2::Coordinate.new(x, y, head)
+				R2d2::Position.new(R2d2::Coordinate.new(x, y), "R2d2::Directions::#{head.capitalize}".constantize.new)
 			end
 		end
 
@@ -27,8 +27,14 @@ module R2d2
 		end
 
 		class Move
+
 			def initialize(options={})
 			end
+
+			def execute(robot)
+				robot.be_placed_at(robot.position.move)
+			end
+
 		end
 
 		class Left

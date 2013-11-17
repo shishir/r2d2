@@ -1,18 +1,56 @@
 module R2d2
 	class Coordinate
-		attr_reader :x, :y, :head
+		attr_reader :x, :y
 
-		def initialize(x, y, head)
+		def initialize(x, y)
 			@x    = x.to_i
 			@y    = y.to_i
-			@head = head
+		end
+
+		def increment_y
+			Coordinate.new(@x, @y + 1)
+		end
+
+		def decrement_y
+			Coordinate.new(@x, @y - 1)
+		end
+
+		def increment_x
+			Coordinate.new(@x + 1, @y)
+		end
+
+		def decrement_x
+			Coordinate.new(@x - 1, @y)
 		end
 
 		def == (other)
-			x == other.x and y == other.y and head == other.head
+			x == other.x and y == other.y
 		end
 
 		def eql?(other)
+			self.class == other.class && self == other
+		end
+	end
+
+	class Position
+		attr_reader :coordinate, :direction
+
+		def initialize(coordinate, direction)
+			@coordinate = coordinate
+			@direction  = direction
+		end
+
+		def move
+			Position.new(direction.move(@coordinate), @direction)
+		end
+
+		def == (other)
+			self.coordinate == other.coordinate && self.direction == other.direction
+		end
+
+		def eq? (other)
+			puts self.class == other.class
+			puts self == other
 			self.class == other.class && self == other
 		end
 	end

@@ -8,8 +8,8 @@ module R2d2
 			@logger = options[:logger]
 		end
 
-		def outside_boundary?(coordinate)
-			(0 > coordinate.x || coordinate.x > @x ) || (0 > coordinate.y || coordinate.y > @x )
+		def outside_boundary?(position)
+			(0 > position.coordinate.x || position.coordinate.x > @x ) || (0 > position.coordinate.y || position.coordinate.y > @x )
 		end
 
 	end

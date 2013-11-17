@@ -4,6 +4,8 @@ require_relative 'r2d2/commands/commands'
 require_relative 'r2d2/coordinate'
 require_relative 'r2d2/core_ext/extensions'
 require_relative 'r2d2/robot'
+require_relative 'r2d2/board'
+require_relative 'r2d2/directions/directions'
 
 module R2d2
 
@@ -26,7 +28,6 @@ module R2d2
 					:logger 	 => @logger,
 					:arguments => arguments
 				}
-
 				@commands << "R2d2::Commands::#{command.capitalize}".constantize.new(options)
 			rescue NameError => ex
 				logger.error "Incorrect command. Command can be one of Place, Move, Left, Right, North, South"
