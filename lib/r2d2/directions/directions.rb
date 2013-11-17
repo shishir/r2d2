@@ -1,11 +1,18 @@
 module R2d2
 	module Directions
 
-		class North
+		class Direction
 
 			def == (other)
 				true
 			end
+
+			def eql?(other)
+				self.class == other.class
+			end
+		end
+
+		class North
 
 			def move(coordinate)
 				coordinate.increment_y
@@ -18,18 +25,9 @@ module R2d2
 			def turn_right
 				East.new
 			end
-
-
-			def eql?(other)
-				self.class == other.class
-			end
 		end
 
 		class South
-
-			def == (other)
-				true
-			end
 
 			def move(coordinate)
 				coordinate.decrement_y
@@ -42,18 +40,9 @@ module R2d2
 			def turn_right
 				West.new
 			end
-
-
-			def eql?(other)
-				self.class == other.class
-			end
 		end
 
 		class East
-
-			def == (other)
-				true
-			end
 
 			def move(coordinate)
 				coordinate.increment_x
@@ -66,18 +55,9 @@ module R2d2
 			def turn_right
 				South.new
 			end
-
-			def eql?(other)
-				self.class == other.class
-			end
-
 		end
 
 		class West
-
-			def == (other)
-				true
-			end
 
 			def move(coordinate)
 				coordinate.decrement_x
@@ -90,12 +70,7 @@ module R2d2
 			def turn_right
 				North.new
 			end
-
-			def eql?(other)
-				self.class == other.class
-			end
 		end
-
 
 	end
 end

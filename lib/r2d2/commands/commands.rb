@@ -24,6 +24,9 @@ module R2d2
 		class Report
 			def initialize(options={})
 			end
+
+			def execute(robot)
+			end
 		end
 
 		class Move

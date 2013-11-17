@@ -15,5 +15,6 @@ module R2d2
 		def position
 			@position
 		end
+
 	end
 end
