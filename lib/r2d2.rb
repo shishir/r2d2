@@ -34,9 +34,12 @@ module R2d2
 				@commands << command
 				command.execute(robot)
 
+			rescue RobotNotInitializedException => ex
+				logger.error("Robot needs to be placed on the board. use PLACE command. eg. Place 0,0,North\n")
 			rescue WrongPositionException => ex
-				logger.error("Wrong Command. Rover will fall off the board.\n")
+				logger.error("Wrong Command. Robot will fall off the board.\n")
 			rescue NameError => ex
+				puts ex
 				logger.error "Incorrect command. Command can be one of Place, Move, Left, Right, North, South\n"
 			end while cmd_str.capitalize != "Report"
 

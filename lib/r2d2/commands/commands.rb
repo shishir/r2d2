@@ -1,4 +1,6 @@
 module R2d2
+  class RobotNotInitializedException < Exception; end;
+
   module Commands
 
     class Place
@@ -35,6 +37,7 @@ module R2d2
       end
 
       def execute(robot)
+        raise RobotNotInitializedException unless robot.position
         robot.be_placed_at(robot.position.move)
       end
 
@@ -45,6 +48,7 @@ module R2d2
       end
 
       def execute(robot)
+        raise RobotNotInitializedException unless robot.position
         robot.be_placed_at(robot.position.turn_left)
       end
     end
@@ -54,6 +58,7 @@ module R2d2
       end
 
       def execute(robot)
+        raise RobotNotInitializedException unless robot.position
         robot.be_placed_at(robot.position.turn_right)
       end
     end
