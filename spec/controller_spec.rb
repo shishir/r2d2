@@ -18,4 +18,5 @@ describe R2d2::Controller do
 		@controller.commands[3].should be_instance_of(R2d2::Commands::Right)
 		@controller.commands[4].should be_instance_of(R2d2::Commands::Report)
 	end
+
 end

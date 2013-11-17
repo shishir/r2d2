@@ -44,6 +44,15 @@ module R2d2
 			Position.new(direction.move(@coordinate), @direction)
 		end
 
+		def turn_left
+			Position.new(@coordinate, @direction.turn_left)
+		end
+
+		def turn_right
+			Position.new(@coordinate, @direction.turn_right)
+		end
+
+
 		def == (other)
 			self.coordinate == other.coordinate && self.direction == other.direction
 		end

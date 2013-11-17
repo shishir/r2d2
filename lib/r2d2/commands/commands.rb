@@ -40,10 +40,18 @@ module R2d2
 		class Left
 			def initialize(options={})
 			end
+
+			def execute(robot)
+				robot.be_placed_at(robot.position.turn_left)
+			end
 		end
 
 		class Right
 			def initialize(options={})
+			end
+
+			def execute(robot)
+				robot.be_placed_at(robot.position.turn_right)
 			end
 		end
 
