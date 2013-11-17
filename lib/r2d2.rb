@@ -13,8 +13,8 @@ module R2d2
     attr_reader :logger, :robot
 
     def initialize(options)
-      @logger           = options[:logger]
-      @robot            = Robot.new(:logger => logger)
+      @logger = options[:logger]
+      @robot  = Robot.new(:logger => logger)
     end
 
     def run_commands
