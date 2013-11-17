@@ -12,7 +12,7 @@ module R2d2
       end
     end
 
-    class North
+    class North < Direction
 
       def move(coordinate)
         coordinate.increment_y
@@ -27,7 +27,7 @@ module R2d2
       end
     end
 
-    class South
+    class South < Direction
 
       def move(coordinate)
         coordinate.decrement_y
@@ -42,7 +42,7 @@ module R2d2
       end
     end
 
-    class East
+    class East < Direction
 
       def move(coordinate)
         coordinate.increment_x
@@ -57,7 +57,7 @@ module R2d2
       end
     end
 
-    class West
+    class West < Direction
 
       def move(coordinate)
         coordinate.decrement_x
