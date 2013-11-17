@@ -7,13 +7,15 @@ describe R2d2::Controller do
 	end
 
 	it "should controller should read commands for the user" do
-		@controller.should_receive(:take_input).and_return("PLACE 0 0 NORTH\n", "REPORT\n")
+		@controller.should_receive(:take_input).and_return("PLACE 0 0 NORTH", "MOVE", "LEFT", "RIGHT", "REPORT")
 
 		@controller.run_commands
 
-		@controller.commands.count.should == 2
+		@controller.commands.count.should == 5
 		@controller.commands[0].should be_instance_of(R2d2::Commands::Place)
-		@controller.commands[1].should be_instance_of(R2d2::Commands::Report)
+		@controller.commands[1].should be_instance_of(R2d2::Commands::Move)
+		@controller.commands[2].should be_instance_of(R2d2::Commands::Left)
+		@controller.commands[3].should be_instance_of(R2d2::Commands::Right)
+		@controller.commands[4].should be_instance_of(R2d2::Commands::Report)
 	end
-
 end
