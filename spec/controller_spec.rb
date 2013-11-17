@@ -2,7 +2,7 @@ require_relative('./spec_helper')
 
 describe R2d2::Controller do
 
-  before do
+  before(:each) do
     @logger = double("logger")
     @logger.stub(:info)
     @logger.stub(:error)
@@ -23,7 +23,7 @@ describe R2d2::Controller do
   end
 
   it "should handle wrong coordinate execption" do
-    @logger.should_receive(:error).with("Wrong Command. Rover will fall off the board.\n")
+    @logger.should_receive(:error).with("Wrong Command. Robot will fall off the board.\n")
     @controller.should_receive(:take_input).and_return("Place 0,0,North", "LEFT", "MOVE", "REPORT")
     @controller.run_commands
   end
