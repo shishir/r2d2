@@ -15,6 +15,12 @@ describe R2d2::Commands::Place do
     @place.execute(robot)
     robot.position.should == R2d2::Position.new(R2d2::Coordinate.new(0, 0), R2d2::Directions::North.new)
   end
+
+  it "should raise invalid direction exception if direction is not one of North, East, West, South" do
+    expect {
+      R2d2::Commands::Place.new({:arguments=>"0,0,N"})
+      }.to raise_exception(R2d2::InvalidDirectionException)
+  end
 end
 
 describe R2d2::Commands::Move do

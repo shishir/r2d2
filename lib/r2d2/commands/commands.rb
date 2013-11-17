@@ -1,5 +1,6 @@
 module R2d2
   class RobotNotInitializedException < Exception; end;
+  class InvalidDirectionException < Exception; end;
 
   module Commands
 
@@ -20,6 +21,8 @@ module R2d2
       def parse_arguments(args)
         x, y, head = args.split(',')
         R2d2::Position.new(R2d2::Coordinate.new(x, y), "R2d2::Directions::#{head.capitalize}".constantize.new)
+      rescue NameError
+        raise InvalidDirectionException
       end
     end
 
