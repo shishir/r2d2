@@ -10,10 +10,9 @@ require_relative 'r2d2/directions/directions'
 module R2d2
   class Controller
 
-    attr_reader :commands, :logger, :robot
+    attr_reader :logger, :robot
 
     def initialize(options)
-      @commands         = []
       @logger           = options[:logger]
       @robot            = Robot.new(:logger => logger)
     end
@@ -30,9 +29,7 @@ module R2d2
           :arguments => arguments
         }
 
-        command  = "R2d2::Commands::#{cmd_str.capitalize}".constantize.new(options)
-        @commands << command
-        command.execute(robot)
+        "R2d2::Commands::#{cmd_str.capitalize}".constantize.new(options).execute(robot)
 
       rescue InvalidDirectionException
         logger.error("Invalid usage of command 'Place'. Direction can be 'North', 'East', 'West', 'South'. eg. Place 0,0,North\n")
