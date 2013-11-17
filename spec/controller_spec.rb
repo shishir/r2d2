@@ -29,7 +29,7 @@ describe R2d2::Controller do
   end
 
   it "should handle wrong coordinate execption" do
-    @logger.should_receive(:error).with("Direction in place command is wrong. use one of North, East, West, South. eg. Place 0,0,North\n")
+    @logger.should_receive(:error).with("Invalid usage of command 'Place'. Direction can be 'North', 'East', 'West', 'South'. eg. Place 0,0,North\n")
     @controller.should_receive(:take_input).and_return("Place 0,0,N", "REPORT")
     @controller.run_commands
   end

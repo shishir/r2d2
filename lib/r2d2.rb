@@ -35,13 +35,13 @@ module R2d2
         command.execute(robot)
 
       rescue InvalidDirectionException
-        logger.error("Direction in place command is wrong. use one of North, East, West, South. eg. Place 0,0,North\n")
+        logger.error("Invalid usage of command 'Place'. Direction can be 'North', 'East', 'West', 'South'. eg. Place 0,0,North\n")
       rescue RobotNotInitializedException
         logger.error("Robot needs to be placed on the board. use PLACE command. eg. Place 0,0,North\n")
       rescue WrongPositionException
         logger.error("Wrong Command. Robot will fall off the board.\n")
       rescue NameError
-        logger.error "Incorrect command. Command can be one of Place, Move, Left, Right\n"
+        logger.error "Invalid command. Command can be one of Place, Move, Left, Right,Report\n"
       end while cmd_str.capitalize != "Report"
 
       logger.info @robot.position.to_s
