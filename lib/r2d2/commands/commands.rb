@@ -27,8 +27,7 @@ module R2d2
     end
 
     class Report
-      def initialize(options={})
-      end
+      def initialize(options={}); end;
 
       def execute(robot)
       end
@@ -36,8 +35,7 @@ module R2d2
 
     class Move
 
-      def initialize(options={})
-      end
+      def initialize(options={}); end;
 
       def execute(robot)
         raise RobotNotInitializedException unless robot.position
@@ -47,8 +45,7 @@ module R2d2
     end
 
     class Left
-      def initialize(options={})
-      end
+      def initialize(options={}); end;
 
       def execute(robot)
         raise RobotNotInitializedException unless robot.position
@@ -57,8 +54,7 @@ module R2d2
     end
 
     class Right
-      def initialize(options={})
-      end
+      def initialize(options={}); end;
 
       def execute(robot)
         raise RobotNotInitializedException unless robot.position
