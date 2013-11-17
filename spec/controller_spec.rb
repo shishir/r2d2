@@ -3,7 +3,10 @@ require_relative('./spec_helper')
 describe R2d2::Controller do
 
   before do
-    @controller = R2d2::Controller.new
+    logger = double(logger)
+    logger.stub(:info)
+    logger.stub(:error)
+    @controller = R2d2::Controller.new(:logger => logger)
   end
 
   it "should controller should read commands for the user" do
@@ -17,6 +20,11 @@ describe R2d2::Controller do
     @controller.commands[2].should be_instance_of(R2d2::Commands::Left)
     @controller.commands[3].should be_instance_of(R2d2::Commands::Right)
     @controller.commands[4].should be_instance_of(R2d2::Commands::Report)
+  end
+
+  it "should handle wrong coordinate execption" do
+    @controller.should_receive(:take_input).and_return("Place 0,0,North", "LEFT", "MOVE", "REPORT")
+    @controller.run_commands
   end
 
   it "#testcase 1" do
