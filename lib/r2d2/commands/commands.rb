@@ -43,7 +43,7 @@ module R2d2
 
       def execute(robot)
         raise RobotNotInitializedException unless robot.position
-        robot.be_placed_at(robot.position.move)
+        robot.move
       end
 
     end
@@ -53,7 +53,7 @@ module R2d2
 
       def execute(robot)
         raise RobotNotInitializedException unless robot.position
-        robot.be_placed_at(robot.position.turn_left)
+        robot.turn_left
       end
     end
 
@@ -62,7 +62,7 @@ module R2d2
 
       def execute(robot)
         raise RobotNotInitializedException unless robot.position
-        robot.be_placed_at(robot.position.turn_right)
+        robot.turn_right
       end
     end
 

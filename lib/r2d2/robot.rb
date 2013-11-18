@@ -16,5 +16,16 @@ module R2d2
       @position
     end
 
+    def move
+      be_placed_at(position.move)
+    end
+
+    def turn_left
+      be_placed_at(position.turn_left)
+    end
+
+    def turn_right
+      be_placed_at(position.turn_right)
+    end
   end
 end
