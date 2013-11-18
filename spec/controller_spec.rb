@@ -36,7 +36,9 @@ describe R2d2::Controller do
   it "#testcase 2" do
     @controller.should_receive(:take_input).and_return("PLACE 0,0,NORTH", "LEFT", "REPORT")
 
-    @controller.run_commands
+    3.times do
+      @controller.run_commands
+    end
 
     @controller.robot.position.should == R2d2::Position.new(R2d2::Coordinate.new(0,0), R2d2::Directions::West)
   end
@@ -44,7 +46,9 @@ describe R2d2::Controller do
   it "#testcase 3" do
     @controller.should_receive(:take_input).and_return("PLACE 1,2,EAST", "MOVE", "MOVE", "LEFT", "MOVE", "REPORT")
 
-    @controller.run_commands
+    6.times do
+      @controller.run_commands
+    end
 
     @controller.robot.position.should == R2d2::Position.new(R2d2::Coordinate.new(3,3), R2d2::Directions::North)
   end
