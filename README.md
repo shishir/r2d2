@@ -1,6 +1,6 @@
 Toy Robot Simulator
 ====
-It is implement as a command line tool.
+It is implemented as a command line tool.
 
 Install
 ====
