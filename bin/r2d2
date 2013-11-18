@@ -16,6 +16,19 @@ trap(:INT) do
   exit(0)
 end
 
+logger.info("=================================================\n")
+logger.info("> Toy Robot Simulator Instructions \n")
+logger.info("> Valid commands Place, Move, Left, Right, Report\n")
+logger.info("> Valid directions North, East, West, South\n")
+logger.info("> Board size 5X5\n")
+logger.info("> CTRL+C to exit\n")
+logger.info("\n")
+logger.info("\n")
+logger.info("e.g. \nPlace 0,0,North\n")
+logger.info("Move\n")
+logger.info("Report\n")
+logger.info("=================================================\n")
+
 while true do
   controller.run_commands
 end
