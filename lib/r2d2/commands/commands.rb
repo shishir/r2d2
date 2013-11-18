@@ -27,9 +27,13 @@ module R2d2
     end
 
     class Report
-      def initialize(options={}); end;
+      attr_reader :logger
+      def initialize(options={})
+        @logger = options[:logger]
+      end
 
       def execute(robot)
+        logger.info "#{robot.position.to_s}\n"
       end
     end
 

@@ -10,15 +10,14 @@ require_relative 'r2d2/directions/directions'
 module R2d2
   class Controller
 
-    attr_reader :logger, :robot
+    attr_reader   :logger, :robot, :continue
 
     def initialize(options)
-      @logger = options[:logger]
-      @robot  = Robot.new(:logger => logger)
+      @logger     = options[:logger]
+      @robot      = Robot.new(:logger => logger)
     end
 
     def run_commands
-
       begin
         logger.info "$> "
         input              = take_input
@@ -30,7 +29,6 @@ module R2d2
         }
 
         "R2d2::Commands::#{cmd_str.capitalize}".constantize.new(options).execute(robot)
-
       rescue InvalidDirectionException
         logger.error("Invalid usage of command 'Place'. Direction can be 'North', 'East', 'West', 'South'. eg. Place 0,0,North\n")
       rescue RobotNotInitializedException
@@ -39,9 +37,7 @@ module R2d2
         logger.error("Wrong Command. Robot will fall off the board.\n")
       rescue NameError
         logger.error "Invalid command. Command can be one of Place, Move, Left, Right,Report\n"
-      end while cmd_str.capitalize != "Report"
-
-      logger.info @robot.position.to_s
+      end
     end
 
     def take_input

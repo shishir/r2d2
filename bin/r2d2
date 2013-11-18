@@ -2,12 +2,21 @@
 
 require_relative '../lib/r2d2'
 
+
 logger           = ::Logger.new(STDOUT)
 logger.level     = Logger::INFO
 logger.formatter = proc do |severity, datetime, progname, msg|
-				"#{msg}"
+        "#{msg}"
 end
 
+controller = R2d2::Controller.new(:logger => logger)
 
-R2d2::Controller.new(:logger => logger).run_commands
+trap(:INT) do
+  logger.info "Misson accomplished.\n"
+  exit(0)
+end
+
+while true do
+  controller.run_commands
+end
 logger.close
