@@ -62,8 +62,6 @@ module R2d2
     end
 
     def eq? (other)
-      puts self.class == other.class
-      puts self == other
       self.class == other.class && self == other
     end
 
